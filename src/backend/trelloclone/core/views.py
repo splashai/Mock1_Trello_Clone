@@ -27,8 +27,8 @@ class RetriveTaskList(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TaskListSerializer
 
 
-class ListCard(generics.ListCreateAPIView):
+class RetriveCard(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
-        queryset = TaskList.objects.filter(board_id = self.kwargs["pk"])
+        queryset = Card.objects.filter(id = self.kwargs["pk"])
         return queryset
     serializer_class = CardSerializer
