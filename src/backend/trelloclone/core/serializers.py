@@ -3,12 +3,6 @@ from rest_framework import serializers
 from .models import Board, TaskList, Card, BoardUserRelationship
 
 
-class BoardSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Board
-        fields = '__all__'
-
-
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
@@ -16,9 +10,16 @@ class CardSerializer(serializers.ModelSerializer):
 
 
 class TaskListSerializer(serializers.ModelSerializer):
-    cards = CardSerializer(many = True, required =False)
+    card_set = CardSerializer(many = True, required =False)
     class Meta:
         model = TaskList
+        fields = '__all__'
+
+
+class BoardSerializer(serializers.ModelSerializer):
+    tasklist_set = TaskListSerializer(many=True, required=False)
+    class Meta:
+        model = Board
         fields = '__all__'
 
 
