@@ -22,7 +22,7 @@ class ListTaskList(generics.ListCreateAPIView):
 
 class RetriveTaskList(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
-        queryset = TaskList.objects.filter(board_id = self.kwargs["pk"])
+        queryset = TaskList.objects.filter(id = self.kwargs["pk"])
         return queryset
     serializer_class = TaskListSerializer
 
