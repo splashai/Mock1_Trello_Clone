@@ -17,6 +17,12 @@ class TaskListSerializer(serializers.ModelSerializer):
 
 
 class BoardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Board
+        fields = '__all__'
+
+
+class BoardDetailSerializer(serializers.ModelSerializer):
     tasklist_set = TaskListSerializer(many=True, required=False)
     class Meta:
         model = Board

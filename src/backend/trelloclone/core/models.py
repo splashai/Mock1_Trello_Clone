@@ -12,6 +12,8 @@ class Board(models.Model):
     description = models.TextField()
     is_private = models.BooleanField()
     is_archived = models.BooleanField()
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    create_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name

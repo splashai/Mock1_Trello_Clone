@@ -1,6 +1,6 @@
 from rest_framework import generics
 
-from .serializers import BoardSerializer, CardSerializer, TaskListSerializer, BoardUserRelationshipSerializer
+from .serializers import BoardSerializer, CardSerializer, TaskListSerializer, BoardUserRelationshipSerializer, BoardDetailSerializer
 from .models import Board, TaskList, Card, BoardUserRelationship
 
 class ListBoard(generics.ListCreateAPIView):
@@ -10,7 +10,7 @@ class ListBoard(generics.ListCreateAPIView):
 
 class RetriveBoard(generics.RetrieveUpdateDestroyAPIView):
     queryset = Board.objects.all()
-    serializer_class = BoardSerializer
+    serializer_class = BoardDetailSerializer
 
 #
 class ListTaskList(generics.ListCreateAPIView):

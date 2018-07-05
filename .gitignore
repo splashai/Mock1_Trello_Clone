@@ -3,4 +3,3 @@
 
 src/backend/trelloclone/core/__pycache__/
 
-*.sqlite3
