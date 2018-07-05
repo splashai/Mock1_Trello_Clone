@@ -10,7 +10,9 @@ class BoardSerializer(serializers.ModelSerializer):
 
 
 class TaskListSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = TaskList
+        fields = '__all__'
 
 
 class CardSerializer(serializers.ModelSerializer):
