@@ -8,11 +8,11 @@ class ListBoard(generics.ListCreateAPIView):
     serializer_class = BoardSerializer
 
 
-class ListBoard(generics.RetrieveUpdateDestroyAPIView):
+class RetriveBoard(generics.RetrieveUpdateDestroyAPIView):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
 
-
+#
 class ListTaskList(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = TaskList.objects.filter(board_id = self.kwargs["pk"])
@@ -20,7 +20,7 @@ class ListTaskList(generics.ListCreateAPIView):
     serializer_class = TaskListSerializer
 
 
-class ListTaskList(generics.RetrieveUpdateDestroyAPIView):
+class RetriveTaskList(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         queryset = TaskList.objects.filter(board_id = self.kwargs["pk"])
         return queryset
@@ -29,6 +29,6 @@ class ListTaskList(generics.RetrieveUpdateDestroyAPIView):
 
 class ListCard(generics.ListCreateAPIView):
     def get_queryset(self):
-        queryset = TaskList.objects.filter(board_id = self.kwargs["pkb"])
+        queryset = TaskList.objects.filter(board_id = self.kwargs["pk"])
         return queryset
     serializer_class = CardSerializer
