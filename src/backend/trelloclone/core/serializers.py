@@ -16,6 +16,13 @@ class TaskListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class TaskListDetailSerializer(serializers.ModelSerializer):
+    card_set = CardSerializer(many = True, required =False)
+    class Meta:
+        model = TaskList
+        fields = '__all__'
+
+
 class BoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Board
@@ -23,7 +30,7 @@ class BoardSerializer(serializers.ModelSerializer):
 
 
 class BoardDetailSerializer(serializers.ModelSerializer):
-    tasklist_set = TaskListSerializer(many=True, required=False)
+    tasklist_set = TaskListDetailSerializer(many=True, required=False)
     class Meta:
         model = Board
         fields = '__all__'
