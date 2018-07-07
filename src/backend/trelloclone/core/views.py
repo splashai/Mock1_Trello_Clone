@@ -1,16 +1,17 @@
 from rest_framework import generics
+from django.http import JsonResponse
 
 from .serializers import BoardSerializer, CardSerializer, TaskListSerializer, BoardUserRelationshipSerializer, BoardDetailSerializer, TaskListDetailSerializer
 from .models import Board, TaskList, Card, BoardUserRelationship
 
-class ListBoard(generics.ListCreateAPIView):
-    queryset = Board.objects.all()
-    serializer_class = BoardSerializer
-
-
 class RetriveBoard(generics.RetrieveUpdateDestroyAPIView):
     queryset = Board.objects.all()
     serializer_class = BoardDetailSerializer
+
+
+class ListBoard(generics.ListCreateAPIView):
+    queryset = Board.objects.all()
+    serializer_class = BoardSerializer
 
 #
 class ListTaskList(generics.ListCreateAPIView):
