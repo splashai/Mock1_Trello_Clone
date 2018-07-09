@@ -1,8 +1,9 @@
 from rest_framework import generics
 from django.http import JsonResponse
 
-from .serializers import BoardSerializer, CardSerializer, TaskListSerializer, BoardUserRelationshipSerializer, BoardDetailSerializer, TaskListDetailSerializer
-from .models import Board, TaskList, Card, BoardUserRelationship
+from .serializers import BoardSerializer, CardSerializer, TaskListSerializer, BoardUserRelationshipSerializer, BoardDetailSerializer, TaskListDetailSerializer, UserSerializer
+from .models import Board, TaskList, Card, BoardUserRelationship, User
+
 
 class RetriveBoard(generics.RetrieveUpdateDestroyAPIView):
     queryset = Board.objects.all()
@@ -40,3 +41,8 @@ class RetriveCard(generics.RetrieveUpdateDestroyAPIView):
         queryset = Card.objects.filter(id = self.kwargs["pk"])
         return queryset
     serializer_class = CardSerializer
+
+
+class UserDetail(generics.RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework import status
 from rest_framework.response import Response
 
-from .models import Board, TaskList, Card, BoardUserRelationship
+from .models import Board, TaskList, Card, BoardUserRelationship, User
 
 
 class CardSerializer(serializers.ModelSerializer):
@@ -33,24 +33,20 @@ class TaskListDetailSerializer(serializers.ModelSerializer):
         return instance
 
 
-class BoardSerializer(serializers.ModelSerializer):
+class BoardSerializer(serializers.HyperlinkedModelSerializer):
+    # url = serializers.HyperlinkedIdentityField(view_name="board-detail")
     class Meta:
         model = Board
-        fields = '__all__'
+        fields = ('url', 'name', 'description', 'is_private', 'is_archived', 'create_date')
 
 
-class BoardDetailSerializer(serializers.ModelSerializer):
+
+class BoardDetailSerializer(serializers.HyperlinkedModelSerializer):
     tasklist_set = TaskListDetailSerializer(many=True, required=False)
     class Meta:
         model = Board
         fields = '__all__'
 
-    extra_kwargs = {
-        'id': {
-            'read_only': False,
-            'required': True
-        }
-    }
 
     def update(self, instance, validated_data):
         # Update the  instance
@@ -66,4 +62,10 @@ class BoardDetailSerializer(serializers.ModelSerializer):
 class BoardUserRelationshipSerializer(serializers.ModelSerializer):
     class Meta:
         model = BoardUserRelationship
+        fields = '__all__'
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
         fields = '__all__'
