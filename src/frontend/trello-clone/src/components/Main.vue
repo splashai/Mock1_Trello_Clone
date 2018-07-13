@@ -1,17 +1,24 @@
 <template>
-  <div>
-      <ul v-if="boards && boards.length">
-        <li v-for="(board, index) in boards">
-        <p><strong>{{board.name}}</strong></p>
-      <p>{{board.url}}</p>
-    </li>
-  </ul>
+  <div class="container">
+    
+    <div class="container">
+      <div class="notification">
+        <span class="icon has-text-info">
+        <i class="fas fa-user"></i>
+        </span></i><span><strong>Personal Boards</strong></span>
+      </div>
+    </div>
 
-  <!-- <ul v-if="errors && errors.length">
-    <li v-for="error in errors">
-      {{error.message}}
-    </li>
-  </ul> -->
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+            <div class="tile is-child box" v-for="(board, index) in boards"  @click="cardClicked(board.url)">
+                <p class="title"  >{{board.name}}</p>
+                <p>{{board.description}}</p>
+                <p>Created Date : {{board.create_date.slice(0,10) }}</p>
+            </div>
+        </div>
+    </div>
+
   </div>
 </template>
 
@@ -24,6 +31,15 @@ export default {
       boards: [],
       errors: []
     };
+  },
+
+  methods : {
+
+    cardClicked : function (boardUrl){
+      console.log(boardUrl);
+    },
+
+
   },
 
   // Fetches posts when the component is created.
