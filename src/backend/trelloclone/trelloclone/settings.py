@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +50,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',                        # Added for CORS issue.
+    'django.middleware.common.CommonMiddleware',                    # Added for CORS issue.
 ]
+
+# Disable for production - Added for CORS issue.
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'trelloclone.urls'
 
