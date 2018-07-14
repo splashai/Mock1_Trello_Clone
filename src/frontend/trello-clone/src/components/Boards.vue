@@ -11,7 +11,7 @@
 
     <div class="tile is-ancestor">
         <div class="tile is-parent">
-            <div class="tile is-child box" v-for="board in boards"  @click="cardClicked(board.url)">
+            <div class="tile is-child box" v-for="board in getBoards"  @click="cardClicked(board.url)">
                 <p class="title"  >{{board.name}}</p>
                 <p>{{board.description}}</p>
                 <p>Created Date : {{board.create_date.slice(0,10) }}</p>
@@ -22,37 +22,39 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
     return {
-      boards: [],
       errors: []
     };
   },
 
   methods : {
 
-    // cardClicked : function (boardUrl){
-    // },
+    cardClicked : function (boardUrl){
+      console.log(boardUrl);
+    },
 
   },
 
 
   computed : {
+
+    ...mapGetters([
+      'getBoards',
+    ]),
+    
+
+    // ...mapGetters([
+    //   'getBoards',
+    // ]),
   },
 
   // Fetches posts when the component is created.
   created() {
-    axios
-      .get(`http://127.0.0.1:8000/api/v1/boards/`)
-      .then(response => {
-        this.boards = response.data;
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
+    
   }
 };
 </script>
