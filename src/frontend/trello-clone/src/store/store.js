@@ -9,10 +9,7 @@ export default new Vuex.Store({
     
     state : {
         selectedComponent : 'Selected Component',
-        boards : [
-            {name : '1', 'description' :'desc' , create_date : 'sfasdfasfasfasf'
-            },
-        ],
+        boards : [],
     },
 
     getters : {
@@ -21,19 +18,12 @@ export default new Vuex.Store({
         },
 
         getBoards : state => {
-            axios.get(`http://127.0.0.1:8000/api/v1/boards/`)
-            .then(response => {
-                state.boards = response.data;
-            });
-            //     .catch(e => {
-            //         this.errors.push(e);
-            // });
             return state.boards;
         },
     },
 
     mutations : {
-        getBoardsAPI() {
+        getBoardsAPI : state => {
             axios.get(`http://127.0.0.1:8000/api/v1/boards/`)
             .then(response => {
                 state.boards = response.data;
@@ -41,7 +31,6 @@ export default new Vuex.Store({
         //     .catch(e => {
         //         this.errors.push(e);
         // });
-        return state.boards;
         },
     },
 });

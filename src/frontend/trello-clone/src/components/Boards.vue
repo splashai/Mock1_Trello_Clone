@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -45,16 +45,17 @@ export default {
     ...mapGetters([
       'getBoards',
     ]),
+
+    ...mapMutations([
+      'getBoardsAPI',
+    ]),
     
 
-    // ...mapGetters([
-    //   'getBoards',
-    // ]),
   },
 
   // Fetches posts when the component is created.
   created() {
-    
+    this.$store.commit('getBoardsAPI');
   }
 };
 </script>
