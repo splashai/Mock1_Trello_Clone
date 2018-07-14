@@ -5,20 +5,19 @@
       <div class="notification">
         <span class="icon has-text-info">
         <i class="fas fa-user"></i>
-        </span></i><span><strong>Personal Boards</strong></span>
+        </span><span><strong>Personal Boards</strong></span>
       </div>
     </div>
 
     <div class="tile is-ancestor">
         <div class="tile is-parent">
-            <div class="tile is-child box" v-for="(board, index) in boards"  @click="cardClicked(board.url)">
+            <div class="tile is-child box" v-for="board in boards"  @click="cardClicked(board.url)">
                 <p class="title"  >{{board.name}}</p>
                 <p>{{board.description}}</p>
                 <p>Created Date : {{board.create_date.slice(0,10) }}</p>
             </div>
         </div>
     </div>
-
   </div>
 </template>
 
@@ -35,11 +34,13 @@ export default {
 
   methods : {
 
-    cardClicked : function (boardUrl){
-      console.log(boardUrl);
-    },
+    // cardClicked : function (boardUrl){
+    // },
+
+  },
 
 
+  computed : {
   },
 
   // Fetches posts when the component is created.
