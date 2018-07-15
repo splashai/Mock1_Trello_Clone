@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   data() {
@@ -34,7 +34,9 @@ export default {
   methods : {
 
     cardClicked : function (boardUrl){
-      console.log(boardUrl);
+      this.$store.dispatch('getBoardDetailsAPI', {
+        url : boardUrl,
+      });
     },
 
   },
@@ -48,6 +50,10 @@ export default {
 
     ...mapMutations([
       'getBoardsAPI',
+    ]),
+
+    ...mapActions([
+      'getBoardDetailsAPI'
     ]),
     
 
