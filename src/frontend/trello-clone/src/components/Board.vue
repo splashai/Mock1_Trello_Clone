@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-    
+
     </div>  <!-- End of container -->
 
 </div>
@@ -37,7 +37,7 @@ import Tasklist from './Tasklist'
 export default {
   data() {
     return {
-      
+
     };
   },
 
@@ -47,7 +47,7 @@ export default {
 
   methods : {
 
-    
+
   },
 
 
@@ -57,7 +57,7 @@ export default {
       'getBoardDetails',
     ]),
 
-    
+
 
   }, // End of computed
 
@@ -78,5 +78,5 @@ export default {
     .tile{
         padding : 20px;
     }
-    
+
 </style>

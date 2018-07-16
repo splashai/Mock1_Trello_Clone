@@ -25,7 +25,14 @@ export default new Vuex.Store({
         getBoardDetails : state => {
             return state.selectedBoardDetails;
         },
-        
+
+        getTasklistDetails : (state) => (id) =>  {
+            var result = (state.selectedBoardDetails.tasklist_set.filter(obj => {
+                return obj.id == id;
+            }));
+            return result[0];
+        },
+
     }, // End of getters
 
     mutations: {
@@ -44,7 +51,7 @@ export default new Vuex.Store({
             state.selectedBoardDetails = payload.data;
         },
 
-        
+
     }, // End of mutations.
 
     actions: {
