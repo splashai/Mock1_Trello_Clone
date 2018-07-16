@@ -10,7 +10,7 @@ export default new Vuex.Store({
     state: {
         boards: [],
         selectedBoard: '',
-        selectedBoardDetails: '',
+        selectedBoardDetails: false,
     }, // End of state
 
     getters: {
